@@ -1,2 +1,3 @@
 # Python-Port-Scanner
-Sequential and Threaded port Scanner 
+- This is a Sequential and Threaded Port Scanner built in Python
+- for education use and security
