@@ -1,3 +1,2 @@
-const test = "THIS IS A TEST PR"
-const test2 = "THIS is test 2"
-const secretKey = "my-secret-key"
+const secretKey = "123456789aabb"
+const query = `SELECT * FROM users WHERE username = '${username}' 
