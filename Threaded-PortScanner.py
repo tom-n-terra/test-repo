@@ -1,9 +1,6 @@
 import threading, socket, sys,subprocess
 from queue import Queue
 from datetime import datetime
-import os
-import sys
-import subprocess
 """
 This is Threaded Port Scanner
 """
@@ -21,36 +18,6 @@ mode=0
 remoteServer=""
 queue = Queue() #Queue for holding the range of port to scan 
 open_ports = [] #List for holding all the open port
-
-def kill_process_on_port(port: int):
-    """
-    Kill the process using the specified port on Windows or Linux.
-    """
-    try:
-        if sys.platform.startswith("win"):  # Windows
-            result = subprocess.run(
-                ["netstat", "-ano"], capture_output=True, text=True, check=True
-            )
-            for line in result.stdout.splitlines():
-                if f":{port} " in line:
-                    pid = line.strip().split()[-1]
-                    subprocess.run(["taskkill", "/PID", pid, "/F"], check=True)
-                    print(f"Killed process {pid} on port {port}")
-                    return
-        else:  # Linux / Mac
-            result = subprocess.run(
-                ["lsof", "-i", f":{port}"], capture_output=True, text=True
-            )
-            for line in result.stdout.splitlines():
-                parts = line.split()
-                if parts[1].isdigit():
-                    pid = parts[1]
-                    subprocess.run(["kill", "-9", pid], check=True)
-                    print(f"Killed process {pid} on port {port}")
-                    return
-        print(f"No process found on port {port}")
-    except Exception as e:
-        print(f"Error: {e}")
 
 def portscan(port,remoteServerIP):
     try:
