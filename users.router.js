@@ -5,8 +5,7 @@ const router = express.Router();
 let users = [
   { id: 1, name: 'John Doe', email: 'john@example.com', age: 30 },
   { id: 2, name: 'Jane Smith', email: 'jane@example.com', age: 25 },
-  { id: 3, name: 'Mike Johnson', email: 'mike@example.com', age: 35 },
-  { id: 4, name: 'Mike Test', email: 'mikeTest@example.com', age: 35 }
+  { id: 3, name: 'Mike Johnson', email: 'mike@example.com', age: 35 }
 ];
 
 // GET /users - Get all users
@@ -34,6 +33,7 @@ const getAllUsers = (req, res) => {
   }
 };
 
+// GET /users/:id - Get user by ID
 const getUserById = (req, res) => {
   try {
     const { id } = req.params;
